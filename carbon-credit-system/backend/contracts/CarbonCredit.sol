@@ -74,3 +74,5 @@ contract CarbonCredit is ERC1155, AccessControl, Ownable, Pausable {
         return super.supportsInterface(interfaceId);
     }
 }
+// QUICKNODE_AMOY_URL=https://evocative-old-arm.matic-amoy.quiknode.pro/c189924c040c418a594d82b77f7740ebae255122 
+// PRIVATE_KEY=d9d5a87c62ccf04366acb8cf80ff3dd4b3adb726c54cace9cf198fdc1eeadb47
