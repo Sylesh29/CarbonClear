@@ -1,21 +1,65 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaLeaf } from "react-icons/fa";
 
-const Navbar = () => (
-    <nav className="bg-gray-800 text-white py-4 shadow-lg">
-        <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold flex items-center">
-                <FaLeaf className="mr-2 text-green-400" /> Carbon Credit System
-            </h1>
-            <ul className="flex space-x-6">
-                <li><Link to="/" className="hover:text-green-400">Home</Link></li>
-                <li><Link to="/dashboard" className="hover:text-green-400">Dashboard</Link></li>
-                <li><Link to="/marketplace" className="hover:text-green-400">Marketplace</Link></li>
-                <li><Link to="/retirement" className="hover:text-green-400">Retirement</Link></li>
-            </ul>
-        </div>
-    </nav>
-);
+const Navbar = () => {
+    return (
+        <nav className="bg-gray-900 text-white py-4 shadow-lg">
+            <div className="container mx-auto flex justify-between items-center px-8">
+                <h1 className="text-3xl font-extrabold flex items-center">
+                    <FaLeaf className="mr-2 text-green-400" /> Carbon Clear
+                </h1>
+                <ul className="flex space-x-6 items-center">
+                    {["Home", "Dashboard", "Marketplace", "Retirement"].map((item) => (
+                        <li key={item}>
+                            <NavLink
+                                to={`/${item.toLowerCase()}`}
+                                className={({ isActive }) =>
+                                    `px-4 py-2 rounded-lg font-semibold transition ${
+                                        isActive ? "bg-green-500 text-white" : "hover:text-green-400"
+                                    }`
+                                }
+                            >
+                                {item}
+                            </NavLink>
+                        </li>
+                    ))}
+                    <li>
+                        <NavLink
+                            to="/profile"
+                            className="px-4 py-2 bg-blue-500 rounded-lg text-white font-semibold hover:bg-blue-600 transition"
+                        >
+                            Profile
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/admin"
+                            className="px-4 py-2 bg-gray-700 rounded-lg text-white font-semibold hover:bg-gray-800 transition"
+                        >
+                            Admin Panel
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/login"
+                            className="px-4 py-2 bg-blue-500 rounded-lg text-white font-semibold hover:bg-blue-600 transition"
+                        >
+                            Login
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/register"
+                            className="px-4 py-2 bg-green-500 rounded-lg text-white font-semibold hover:bg-green-600 transition"
+                        >
+                            Register
+                        </NavLink>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    );
+};
 
 export default Navbar;
